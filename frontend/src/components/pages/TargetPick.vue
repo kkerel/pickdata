@@ -38,7 +38,7 @@
 									<div class="right_setup">
 										<ui-select :selectData="this.selectData" :onClick="selectTarget"></ui-select>
 										<button type="button" @click="refreshTarget" class="refresh">새로고침</button>
-										<button type="button" @click="popupOpenBtn('makeModal','add')">타겟만들기</button>
+										<button type="button" @click="popupOpenBtn('makeModal','add')">타겟만들기</button><!-- 타겟만들기 팝업 popup > createtarget -->
 									</div>
 								</div>
 								<div class="target_contents">
@@ -55,6 +55,9 @@
 												<p><span class="opensans">{{ formatterDisplayCount(item.display_count) }}</span></p>
 											</div>
 											<div class="target_state">
+												<!-- 신규고객 타겟 -->
+												<!-- <p class="new_target">신규고객 타겟</p> -->
+												<!-- // 신규고객 타겟 -->
 												<p>{{ item.description.pixel_mapping_category }}</p>
 												<p>{{ item.description.retention_days }}일</p>
 												<p>{{ item.description.description }}</p>

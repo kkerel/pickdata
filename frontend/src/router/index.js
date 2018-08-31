@@ -9,6 +9,8 @@ import CreativeLibrary from '@/components/pages/CreativeLibrary'
 import SetReport from '@/components/pages/SetReport'
 import AccountReport from '@/components/pages/AccountReport'
 import Setting from '@/components/pages/Setting'
+import NewTagetPick from '@/components/pages/NewTagetPick'
+import libraryInsight from '@/components/pages/libraryInsight'
 import { requireAuth } from '../utils/auth'
 
 Vue.use(Router)
@@ -27,23 +29,35 @@ export default new Router({
       component: TargetPick
     },
     {
-      path: '/report',
+      path: '/setreport',
       beforeEnter: requireAuth,
-      name: 'TargetReport',
-      component: TargetReport,
-      children: [
-        {
-          path: 'setreport',
-          name: 'SetReport',
-          component: SetReport
-        },
-        {
-          path: 'accountreport',
-          name: 'AccountReport',
-          component: AccountReport
-        }
-      ]
+      name: 'SetReport',
+      component: SetReport,
     },
+    {
+      path: '/accountreport',
+      name: 'AccountReport',
+      beforeEnter: requireAuth,
+      component: AccountReport
+    },
+    // {
+    //   path: '/report',
+    //   beforeEnter: requireAuth,
+    //   name: 'TargetReport',
+    //   component: TargetReport,
+    //   children: [
+    //     {
+    //       path: 'setreport',
+    //       name: 'SetReport',
+    //       component: SetReport
+    //     },
+    //     {
+    //       path: 'accountreport',
+    //       name: 'AccountReport',
+    //       component: AccountReport
+    //     }
+    //   ]
+    // },
     {
       path: '/library',
       beforeEnter: requireAuth,
@@ -55,6 +69,18 @@ export default new Router({
       beforeEnter: requireAuth,
       name: 'Setting',
       component: Setting
+    },
+    {
+      path: '/newpick',
+      beforeEnter: requireAuth,
+      name: 'NewTagetPick',
+      component: NewTagetPick
+    },
+    {
+      path: '/insight',
+      beforeEnter: requireAuth,
+      name: 'libraryInsight',
+      component: libraryInsight
     }
   ]
 })

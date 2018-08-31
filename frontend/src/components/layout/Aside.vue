@@ -3,8 +3,6 @@
     <div class="aside-wrap">
       <div class="aside_section first_section">
         <div class="user_info_wrap">
-          <div class="u_mask"></div>
-          <div class="u_logo"><img src="../../assets/images/icon/user_logo_type01.png" alt=""></div>
           <div class="u_info">
             <div class="u_info_box">
               <pre id="ad_list_cate" href="javascript:void(0);" @click="onClick()" v-bind:class="{active: isActive}">{{ selectedFbAdAccount.name }}</pre>
@@ -35,8 +33,11 @@
       <div class="section_tab_widget clearfix">
         <ul>
           <li rel="section_list_1" class="aside_section active"><router-link v-bind:to="{ path: '/pick' }"></router-link></li>
-          <li rel="section_list_2" class="aside_section"><router-link v-bind:to="{ path: '/report/accountreport' }"></router-link></li>
-          <li rel="section_list_3" class="aside_section"><router-link v-bind:to="{ path: '/library' }"></router-link></li>
+          <li rel="section_list_2" class="aside_section"><router-link v-bind:to="{ path: '/newpick' }"></router-link></li>
+          <li rel="section_list_3" class="aside_section"><router-link v-bind:to="{ path: '/accountreport' }"></router-link></li>
+          <li rel="section_list_4" class="aside_section"><router-link v-bind:to="{ path: '/setreport' }"></router-link></li>
+          <li rel="section_list_5" class="aside_section"><router-link v-bind:to="{ path: '/library' }"></router-link></li>
+          <li rel="section_list_6" v-show="false" class="aside_section"><router-link v-bind:to="{ path: '/insight' }"></router-link></li>
         </ul>
       </div>
     </div>

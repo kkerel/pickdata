@@ -1,48 +1,54 @@
 <template>
-	<div id="account_report">
-		<div class="target_contents_wrap">
-			<div class="target_search_wrap clearfix">
-				<div class="cate_select">
-					<p>카테고리</p>
-					<ui-select :selectData="this.categorySelectData" :onClick="selectCategory"></ui-select>
-				</div>
-				<div class="admin_select">
-					<p>광고계정</p>
-					<ui-select :selectData="this.accountSelectData" :onClick="selectAccount"></ui-select>
-				</div>
-				<button class="report_search" v-show="false">검색</button>
-			</div>
-			<ui-loading :isShow="isLoading" :titleText="loadingTitle" :descriptionText="loadingDescription"></ui-loading>
-			<div class="target_chart_wrap" v-show="!this.isLoading">
-				<div class="target_calender_wrap">
-					<ui-MiniCalendar v-model="range" ref="mini_calendar"></ui-MiniCalendar>
-				</div>
-				<div>
-					<div class="chart_section">
-						<h2>전체 광고비 추이</h2>
-						<ui-AdvertisingChart :chartData="this.totalSpendChartData"/>
-					</div>
-					<div class="chart_section" v-show="this.categorySelectData.emptyText === '전체' && this.accountSelectData.emptyText === '전체'">
-						<h2>카테고리별 광고비</h2>
-						<ui-CategoryAdvertising :chartData="this.categorySpendChartData" />
-					</div>
-					<div class="chart_section" v-show="this.categorySelectData.emptyText !== '전체' || this.accountSelectData.emptyText !== '전체'">
-						<h2>인구 통계학적 특성</h2>
-						<ui-PopulationChart :chartData="this.ageGenderInsightChartData" />
-					</div>
-					<div class="chart_section chart_last_section">
-						<h2>노출위치</h2>
-						<div class="left_chart">
-							<h3>디바이스별</h3>
-							<ui-DeviceChart :chartData="this.deviceChartData" />
+	<div id="main_wrap" class="clearfix">
+		<div id="container">
+			<div id="container_wrap">
+				<div id="account_report">
+					<div class="target_contents_wrap">
+						<div class="target_search_wrap clearfix">
+							<div class="cate_select">
+								<p>카테고리</p>
+								<ui-select :selectData="this.categorySelectData" :onClick="selectCategory"></ui-select>
+							</div>
+							<div class="admin_select">
+								<p>광고계정</p>
+								<ui-select :selectData="this.accountSelectData" :onClick="selectAccount"></ui-select>
+							</div>
+							<button class="report_search" v-show="false">검색</button>
 						</div>
-						<div class="right_chart">
-							<h3>게재위치별</h3>
-							<ui-PublicationChart :chartData="this.publicationChartData"/>
+						<ui-loading :isShow="isLoading" :titleText="loadingTitle" :descriptionText="loadingDescription"></ui-loading>
+						<div class="target_chart_wrap" v-show="!this.isLoading">
+							<div class="target_calender_wrap">
+								<ui-MiniCalendar v-model="range" ref="mini_calendar"></ui-MiniCalendar>
+							</div>
+							<div>
+								<div class="chart_section">
+									<h2>전체 광고비 추이</h2>
+									<ui-AdvertisingChart :chartData="this.totalSpendChartData"/>
+								</div>
+								<div class="chart_section" v-show="this.categorySelectData.emptyText === '전체' && this.accountSelectData.emptyText === '전체'">
+									<h2>카테고리별 광고비</h2>
+									<ui-CategoryAdvertising :chartData="this.categorySpendChartData" />
+								</div>
+								<div class="chart_section" v-show="this.categorySelectData.emptyText !== '전체' || this.accountSelectData.emptyText !== '전체'">
+									<h2>인구 통계학적 특성</h2>
+									<ui-PopulationChart :chartData="this.ageGenderInsightChartData" />
+								</div>
+								<div class="chart_section chart_last_section">
+									<h2>노출위치</h2>
+									<div class="left_chart">
+										<h3>디바이스별</h3>
+										<ui-DeviceChart :chartData="this.deviceChartData" />
+									</div>
+									<div class="right_chart">
+										<h3>게재위치별</h3>
+										<ui-PublicationChart :chartData="this.publicationChartData"/>
+									</div>
+								</div>
+							</div>
+							<p class="chart_prologue">본 리포트는 픽데이터 등록계정의 광고만을 기준으로 집계되었으므로, 실제 픽셀 전체의 수치와는 차이가 있습니다.</p>
 						</div>
 					</div>
 				</div>
-				<p class="chart_prologue">본 리포트는 픽데이터 등록계정의 광고만을 기준으로 집계되었으므로, 실제 픽셀 전체의 수치와는 차이가 있습니다.</p>
 			</div>
 		</div>
 	</div>
